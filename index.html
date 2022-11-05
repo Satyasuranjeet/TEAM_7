@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+:root {
+   --font-style: 'Nunito Sans', sans-serif;
+}
+
+* {
+   box-sizing: border-box;
+}
+
+body {
+   /* background: #131315; */
+   background-image: url("https://images.freeimages.com/images/large-previews/01a/technology-background-1632715.jpg");
+   font-family: var(--font-style);
+}
+
+.login-box {
+   margin-top: 100px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 400px;
+   padding: 40px;
+   transform: translate(-50%, -50%);
+   background: rgba(0, 0, 0, 0.8);
+   border-radius: 50px;
+}
+
+.login-box h2 {
+   margin: 0 0 30px;
+   padding: 0;
+   color: #fff;
+   text-align: center;
+}
+
+.login-box .user-box input {
+   position: relative;
+   width: 100%;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   margin-bottom: 30px;
+   border: none;
+   border-bottom: 1px solid #fff;
+   outline: none;
+   background: transparent;
+}
+
+.login-box .user-box label {
+   position: relative;
+   left: 0;
+   top: -60px;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   pointer-events: none;
+   transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+   top: -85px;
+   left: 0;
+   color: #7ce4ec;
+   font-size: 12px;
+}
+
+#submit {
+   padding: 10px 20px;
+   font-size: 16px;
+   text-decoration: none;
+   text-transform: uppercase;
+   overflow: hidden;
+   transition: .5s;
+   letter-spacing: 4px;
+   background: none;
+   color: white;
+   border: 1px solid #7ce3ec;
+   margin: auto;
+}
+
+#submit:hover {
+   background: #7ceaec;
+   color: rgb(0, 0, 0);
+   border-radius: 5px;
+   box-shadow: 0 0 5px #7ce8ec, 0 0 25px #7cece1, 0 0 50px #7cecea, 0 0 100px #7cece6;
+}
+
+.button-form {
+   display: flex;
+   flex-direction: row;
+   margin-top: 20px;
+}
+
+#register {
+   font-size: 14px;
+   text-decoration: none;
+   color: #CBBDDB;
+   margin: auto;
+   width: 60%;
+   text-align: center;
+}
+
+#register a {
+   margin: auto;
+   color: #7ce6ec;
+   text-decoration: none;
+}
+    </style>
+    <title>Registration</title>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Sign-Up</h2>
+        <form method="POST" name="google-sheet">
+            <div class="user-box">
+                <input type="text" name="name" required="">
+                <label>Name</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="mobile" required="">
+                <label>Mobile</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="email" required="">
+                <label>Email id</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="tech" required="">
+                <label>Tech Stack</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="profile" required="">
+                <label>Profile picture link</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="github" required="">
+                <label>Github id link</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="intrest" required="">
+                <label>Intrest</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="hobby" required="">
+                <label>Hobby</label>
+            </div>
+            <div class="button-form">
+
+                <button id="submit" href="">
+                   Submit
+                </button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby44uMnkYCGJBXiI0jnOyhjCkeXBzrQzO9wAe8ztAwi9BuhB267rGF7P4VLKCYvfd7L/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Data Collected !!!"))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+</body>
+</html>
